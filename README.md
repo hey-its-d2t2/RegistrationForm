@@ -26,20 +26,16 @@ This project is a web-based registration form developed as part of my first inte
 
 - Users are presented with a registration form to enter their details.
 
-    
 - Form Submission:
-
   - On submission, the server receives the data and checks if the email already exists in the - MongoDB database.
 - User Check:
   - If the user does not exist, their details are saved in the database, and they are redirected to a registration success page.
       
   - If the user already exists, they are redirected to an error page indicating the failure of registration.
-      ![Uploading Registration Error - localhost.png…]()
 
-Success/Error Handling:
-
-Success Page: Confirms the successful registration of the user.
-Error Page: Informs the user that the registration failed due to the email already being in use.
+- Success/Error Handling:
+  - Success Page: Confirms the successful registration of the user.
+  - Error Page: Informs the user that the registration failed due to the email already being in use.
 ### Project Link:
 - Deployed Application: https://registratin-form-te5j.onrender.com
 
