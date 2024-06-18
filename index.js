@@ -12,10 +12,7 @@ const password = process.env.MONGODB_PASSWORD;
 const dbName = "registrationFormDB";  // Add the DB name variable if needed
 
 // Connect to MongoDB
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.xzwoywt.mongodb.net/${dbName}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.xzwoywt.mongodb.net/${dbName}`)
 .then(() => console.log("Connected to MongoDB"))
 .catch((error) => console.error("Error connecting to MongoDB:", error));
 
@@ -41,24 +38,23 @@ app.get("/", (req, res) => {
 app.post("/register", async (req, res) => {
     try {
         const { name, email, password } = req.body;
-        const existingUser = await Registration.findOne({email:email});
-        if(!existingUser){
+        const existingUser = await Registration.findOne({ email: email });
+
+        if (!existingUser) {
             const registrationData = new Registration({ 
                 name, 
                 email, 
                 password 
             });
-    
+
             await registrationData.save();
             res.redirect("/success");
-        }
-        else{
-            Consol.log("User already exists...");
+        } else {
+            console.log("User already exists...");
             res.redirect("/error");
         }
-       
     } catch (error) {
-        console.log(error);
+        console.error("Error during registration:", error);
         res.redirect("/error");
     }
 });
